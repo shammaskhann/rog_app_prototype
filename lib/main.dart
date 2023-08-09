@@ -14,6 +14,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        backgroundColor: Colors.transparent,
           primarySwatch: Colors.red,
           textTheme: const TextTheme(
             labelLarge: TextStyle(

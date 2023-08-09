@@ -20,8 +20,9 @@ class _quantitySelectionState extends State<quantitySelection> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text("Price: ${price.toString()}\$ ",style: Theme.of(context).textTheme.labelMedium),
-        const SizedBox(height:10),
+        const SizedBox(height:20),
         Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -30,9 +31,7 @@ class _quantitySelectionState extends State<quantitySelection> {
                 Text("Quantity",style: Theme.of(context).textTheme.labelLarge),
               ],
             ),
-            const SizedBox(
-              width: 10,
-            ),
+
             Container(
               height: 50,
               width: 100,
@@ -46,9 +45,36 @@ class _quantitySelectionState extends State<quantitySelection> {
                       });
                     },
                     onTap: (){
+                      if(quantity==1){
+                        showDialog(context: context, builder: (ctx)=>
+                          AlertDialog(
+                            backgroundColor: Colors.black38,
+                            icon: Icon(Icons.warning_amber),
+                            title: Text("INVALID QUANTITY",style: TextStyle(color: Colors.red.shade900, fontFamily: 'Metro', fontWeight: FontWeight.bold),),
+                            content:Text("       Please Select a Valid Quantity",style: TextStyle(color: Colors.red.shade900, fontFamily: 'Metro', fontWeight: FontWeight.normal),),
+                            actions: [
+                              Center(
+                                child: Container(
+                                  height:50,
+                                  width:100,
+                                  child: ElevatedButton(onPressed:(){
+                                      Navigator.of(ctx).pop();
+                                    },
+                                        child: Center(
+                                          child: Container(
+                                      child: Text("OK",style: TextStyle(color: Colors.black, fontFamily: 'Metro', fontWeight: FontWeight.normal,fontSize: 25),),
+                                    ),
+                                        )
+                                    ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        );
+                        quantity=2;
+                      }
                       setState(() {
                         quantity=--quantity;
-
                       });
                     },
                   child:Container(
@@ -76,6 +102,33 @@ class _quantitySelectionState extends State<quantitySelection> {
                       });
                     },
                     onTap: (){
+                      if(quantity==50){
+                        showDialog(context: context, builder: (ctx)=> AlertDialog(
+                          backgroundColor: Colors.black38,
+                          icon: Icon(Icons.add_alert),
+                          title: Text("INVALID QUANTITY",style: TextStyle(color: Colors.red.shade900, fontFamily: 'Metro', fontWeight: FontWeight.bold),),
+                          content: Text("     Maximum Quantity limit is 50",style: TextStyle(color: Colors.red.shade900, fontFamily: 'Metro', fontWeight: FontWeight.normal),),
+                          actions:[
+                        Center(
+                        child: Container(
+                        height:50,
+                          width:100,
+                          child: ElevatedButton(onPressed:(){
+                            Navigator.of(ctx).pop();
+                          },
+                              child: Center(
+                                child: Container(
+                                  child: Text("OK",style: TextStyle(color: Colors.black, fontFamily: 'Metro', fontWeight: FontWeight.normal,fontSize: 25),),
+                                ),
+                              )
+                          ),
+                        ),
+                        ),
+                      ],
+                        ),
+                        );
+                        quantity=0;
+                      }
                       setState(() {
                         quantity=++quantity;
                       });
