@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_2/ui/item_screen.dart';
+import 'package:flutter_app_2/widgets/quantitySelection.dart';
 class listView extends StatefulWidget {
   final  String title;
    final String Description;
@@ -15,6 +17,8 @@ class _listViewState extends State<listView> {
   late String Description;
   late double Price;
   late String imageLink;
+  var isFavourite=false;
+  var icon;
 
   _listViewState({
     required this.title,
@@ -22,11 +26,22 @@ class _listViewState extends State<listView> {
     required this.Price,
     required this.imageLink,
   });
+  inFav(isFavourite){
+    if(isFavourite){
+      return Icons.favorite;
+    }
+    else{
+      return Icons.favorite_border;
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(15.0),
       child: InkWell(
+        onTap: (){
+          Navigator.push(context, MaterialPageRoute(builder: (context) => itemScreen(title: title, description: Description, price: Price, imageLink: imageLink)));
+        },
         child:Container(
           decoration: BoxDecoration(
             color: Colors.grey.shade800,
@@ -36,7 +51,12 @@ class _listViewState extends State<listView> {
           width:150,
           child: Column(
             children: [
-               Image.asset(imageLink),
+               Container(
+                 height:100,
+                   child: Padding(
+                     padding: const EdgeInsets.all(8.0),
+                     child: Image.asset(imageLink),
+                   )),
                Padding(
                  padding: const EdgeInsets.only(left:8.0,bottom: 5),
                  child: Text(title,style: Theme.of(context).textTheme.labelMedium,),
@@ -50,8 +70,14 @@ class _listViewState extends State<listView> {
                      Padding(
                        padding: const EdgeInsets.only(right:5.0),
                        child: InkWell(
+                         onTap:(){
+                           setState(() {
+                             isFavourite=!isFavourite;
+                           });
+                         },
                          child: Icon(
-                           Icons.favorite_border,
+                           inFav(isFavourite),
+                           //icon??Icons.favorite_border,
                            color: Colors.red.shade900,
                          ),
                        ),

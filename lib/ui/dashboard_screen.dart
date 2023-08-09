@@ -10,6 +10,25 @@ class dashboard_screen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const String descrip="ROG Strix GeForce RTX® 4090 OC Edition 24GB GDDR6X with DLSS 3 and chart-topping thermal performance "
+        "NVIDIA Ada Lovelace Streaming Multiprocessors: Up to 2x performance and power efficiency"
+        "4th Generation Tensor Cores: Up to 4x performance with DLSS 3 vs. brute-force rendering"
+        "3rd Generation RT Cores: Up to 2X ray tracing performance"
+        "OC mode: Boost clock 2640 MHz (OC mode)/ 2610 MHz (Gaming mode)"
+        "Axial-tech fans scaled up for 23% more airflow"
+        "New patented vapor chamber with milled heatspreader for lower GPU temps"
+        "3.5-slot design: massive fin array optimized for airflow from the three Axial-tech fans"
+        "Diecast shroud, frame, and backplate add rigidity and are vented to further maximize airflow and heat dissipation"
+        "Digital power control with high-current power stages and 15K capacitors to fuel maximum performance"
+        "Auto-Extreme precision automated manufacturing for higher reliability"
+        "GPU Tweak III software provides intuitive performance tweaking, thermal controls, and system monitoring";
+    const String descrip2="Compact and powerful mATX board packed with gaming-oriented features"
+        "LGA1151 socket for 6th-gen Intel® Core™ desktop processors."
+        "Dual DDR4 3733 (OC) support."
+        "Best gaming performance – 5-Way Optimization with Auto-Tuning, 2nd-generation T-Topology and OC design"
+        "Best gaming audio – reinvented SupremeFX 2015 with intuitive Sonic Studio II."
+        "Best gaming networking – best-in-class Intel® Gigabit Ethernet, LANGuard and GameFirst technology."
+        "Best gaming protection – carefully-selected premium components to ensure maximum durability.";
     return Scaffold(
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
@@ -39,14 +58,25 @@ class dashboard_screen extends StatelessWidget {
                     ],
                   )
                 ),
+
                 Positioned(
                   bottom: 30,
                   left: 20,
-                  child: StButton(
-                    title:'Check',
-                    onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => const homeScreen()));
-                    }
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('Clearence',style: Theme.of(context).textTheme.displayLarge,
+                      softWrap: true,
+                      ),
+                      Text('Sale',style: Theme.of(context).textTheme.displayLarge),
+                      StButton(
+                        title:'Check',
+                        onTap: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => const homeScreen()));
+                        }
+                      ),
+                    ],
                   ))
               ],
             ),
@@ -73,13 +103,39 @@ class dashboard_screen extends StatelessWidget {
                       children: [
                         listView(
                         title:"Asus Strix Rtx 4090",
-                        Description: "This place is for some Description againest the Prouct",
+                        Description: descrip,
                         Price: 1699.99,
                         imageLink: 'assets/images/rtx4090.png',
                     ),
+                    listView(
+                          title:"Asus Maximus VII Gene II",
+                          Description: descrip2,
+                          Price: 499.99,
+                          imageLink: "assets/images/MaximusVIIgene2.png",
+                        ),
+                    listView(
+                          title:"Asus Strix Rtx 4090",
+                          Description: descrip,
+                          Price: 1699.99,
+                          imageLink: 'assets/images/rtx4090.png',
+                        ),
+                    listView(
+                          title:"Asus Maximus VII Gene II",
+                          Description: descrip2,
+                          Price: 499.99,
+                          imageLink: "assets/images/MaximusVIIgene2.png",
+                        ),
                       ],
                     ),
-                  )
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text('New',style: Theme.of(context).textTheme.labelLarge),
+                      InkWell(child: Text('View All', style: Theme.of(context).textTheme.labelSmall,))
+                    ],
+                  ),
+                  Text("You've nver seen it before", style: Theme.of(context).textTheme.labelSmall),
                 ],
               ),
             )
