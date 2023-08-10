@@ -14,13 +14,11 @@ class homeScreen extends StatefulWidget {
 enum _SelectedTab { home, favorite, cart, person }
 class _homeScreenState extends State<homeScreen>{
   List page=[
-    dashboard_screen(),
-    favItemScreen(),
-    cartScreeen(),
-    profileScreen(),
+    const dashboard_screen(),
+    const favItemScreen(),
+    const cartScreeen(),
+    const profileScreen(),
   ];
-  int _bottomNavIndex=0;
-
   var _selectedTab = _SelectedTab.home;
 
   void _handleIndexChanged(int i) {
@@ -32,24 +30,33 @@ class _homeScreenState extends State<homeScreen>{
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
-        body:page[_bottomNavIndex],
+        body:page[_SelectedTab.values.indexOf(_selectedTab)],
           bottomNavigationBar: Padding(
-            padding: EdgeInsets.only(bottom: 10),
+            padding: const EdgeInsets.only(bottom: 10),
             child: DotNavigationBar(
-              margin: EdgeInsets.only(left: 10, right: 10),
+              margin: const EdgeInsets.only(left: 10, right: 10),
               currentIndex: _SelectedTab.values.indexOf(_selectedTab),
               onTap: _handleIndexChanged,
-              selectedItemColor: Colors.red.shade900,
+              selectedItemColor: Colors.red.shade700,
               splashBorderRadius: 50,
+            enableFloatingNavBar: true,
+            enablePaddingAnimation: true,
+            boxShadow: const [
+              BoxShadow(
+                color: Colors.black,
+                blurRadius: 0.5,
+                spreadRadius: 2,
+              )
+            ],
             items: [
             /// Home
-            DotNavigationBarItem(icon: Icon(Icons.home),selectedColor: Colors.purple,),
+            DotNavigationBarItem(icon: const Icon(Icons.home),),
             /// Likes
-            DotNavigationBarItem(icon: Icon(Icons.favorite_border), selectedColor: Colors.pink,),
+            DotNavigationBarItem(icon: const Icon(Icons.favorite_border),),
             /// Search
-            DotNavigationBarItem(icon: Icon(Icons.shopping_cart,), selectedColor: Colors.orange,),
+            DotNavigationBarItem(icon: const Icon(Icons.shopping_cart,),),
             /// Profile
-            DotNavigationBarItem(icon: Icon(Icons.person), selectedColor: Colors.teal,),
+            DotNavigationBarItem(icon: const Icon(Icons.person),),
       ],
     ),
           ),

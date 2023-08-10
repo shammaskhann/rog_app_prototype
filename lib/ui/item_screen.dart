@@ -20,9 +20,6 @@ class _itemScreenState extends State<itemScreen> {
   late String description;
   late double price;
   late String imageLink;
-  final List imgList=[
-
-  ];
   _itemScreenState({required this.title, required this.description, required this.price,required this.imageLink});
   @override
   Widget build(BuildContext context) {

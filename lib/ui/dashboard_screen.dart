@@ -1,7 +1,6 @@
 import 'package:another_carousel_pro/another_carousel_pro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_2/widgets/GetStartedButton.dart';
-
 import '../widgets/item_view.dart';
 import 'home_screen.dart';
 
@@ -43,7 +42,6 @@ class dashboard_screen extends StatelessWidget {
                   color: Colors.black,
                   width: double.infinity,
                   height: MediaQuery.of(context).size.height / 1.5,
-                  // height: MediaQuery.of(context).size.height / 1.5,
                   child: AnotherCarousel(
                     boxFit: BoxFit.fill,
                     autoplay: true,
@@ -136,6 +134,37 @@ class dashboard_screen extends StatelessWidget {
                     ],
                   ),
                   Text("You've nver seen it before", style: Theme.of(context).textTheme.labelSmall),
+                  const SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: [
+                        listView(
+                          title:"Asus Strix Rtx 4090",
+                          Description: descrip,
+                          Price: 1699.99,
+                          imageLink: 'assets/images/rtx4090.png',
+                        ),
+                        listView(
+                          title:"Asus Maximus VII Gene II",
+                          Description: descrip2,
+                          Price: 499.99,
+                          imageLink: "assets/images/MaximusVIIgene2.png",
+                        ),
+                        listView(
+                          title:"Asus Strix Rtx 4090",
+                          Description: descrip,
+                          Price: 1699.99,
+                          imageLink: 'assets/images/rtx4090.png',
+                        ),
+                        listView(
+                          title:"Asus Maximus VII Gene II",
+                          Description: descrip2,
+                          Price: 499.99,
+                          imageLink: "assets/images/MaximusVIIgene2.png",
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             )

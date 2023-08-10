@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
           visualDensity: VisualDensity.adaptivePlatformDensity,
-        backgroundColor: Colors.transparent,
+          backgroundColor: Colors.transparent,
           primarySwatch: Colors.red,
           textTheme: const TextTheme(
             labelLarge: TextStyle(
@@ -30,14 +30,21 @@ class MyApp extends StatelessWidget {
                 color: Colors.white),
             labelSmall: TextStyle(
                 fontFamily: 'Metro', fontSize: 10, color: Colors.grey),
-            displayLarge: TextStyle(fontSize: 70, fontFamily: 'Metro', color:Colors.white,fontWeight: FontWeight.bold),
+            displayLarge: TextStyle(
+                fontSize: 70,
+                fontFamily: 'Metro',
+                color: Colors.white,
+                fontWeight: FontWeight.bold),
           ),
           appBarTheme: const AppBarTheme(
             backgroundColor: Colors.transparent,
             foregroundColor: Colors.red,
-            titleTextStyle: TextStyle(fontFamily: 'Metro',fontWeight: FontWeight.bold,color: Colors.red, fontSize: 20),
-          )
-      ),
+            titleTextStyle: TextStyle(
+                fontFamily: 'Metro',
+                fontWeight: FontWeight.bold,
+                color: Colors.red,
+                fontSize: 20),
+          )),
       home: const SplashScreen(),
     );
   }
